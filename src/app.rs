@@ -55,26 +55,25 @@ impl Component for App {
                 self.state.number += 1;
                 true
             }
-            _ => false,
         }
     }
 
-    fn change(&mut self, props: Self::Properties) -> ShouldRender {
+    fn change(&mut self, _: Self::Properties) -> ShouldRender {
         true
     }
 
     fn view(&self) -> Html {
         info!("rendered!");
         let onclick = self.link.callback(|_| Msg::Click);
-        let handleChangeTitle = self.link.callback(|_| Msg::HandleChangeTitle);
-        let handleAdd = self.link.callback(|_| Msg::AddNum);
+        let handle_change_title = self.link.callback(|_| Msg::HandleChangeTitle);
+        let handle_add = self.link.callback(|_| Msg::AddNum);
         html! {
           <div>
             <HeaderComp title={&self.state.title}/>
             <HeaderComp title={format!("{}", self.state.number)}/>
             <button onclick=onclick>{"click me"}</button>
-            <Button onClick=handleChangeTitle>{"hello"}</Button>
-            <Button onClick=handleAdd>{"+1"}</Button>
+            <Button onClick=handle_change_title>{"hello"}</Button>
+            <Button onClick=handle_add>{"+1"}</Button>
 
           </div>
         }

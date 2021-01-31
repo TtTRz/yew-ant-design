@@ -21,7 +21,7 @@ impl<T: PartialEq> NeqAssign for T {
 #[derive(Clone, PartialEq, Properties, Debug)]
 pub struct Props {
     pub children: Children,
-    pub onClick: Callback<MouseEvent>,
+    pub onclick: Callback<MouseEvent>,
 }
 
 pub enum Msg {}
@@ -52,7 +52,7 @@ impl Component for Button {
 
     fn view(&self) -> Html {
         html! {
-          <button onclick=&self.props.onClick>{self.props.children.clone()}</button>
+          <button onclick=&self.props.onclick>{self.props.children.clone()}</button>
         }
     }
 }
