@@ -68,14 +68,19 @@ impl Component for App {
         let handle_change_title = self.link.callback(|_| Msg::HandleChangeTitle);
         let handle_add = self.link.callback(|_| Msg::AddNum);
         html! {
-          <div>
-            <HeaderComp title={&self.state.title}/>
-            <HeaderComp title={format!("{}", self.state.number)}/>
+          <>
+            <Header>
+              <Menu>
+                <MenuItem>
+                  {"hello"}
+                </MenuItem>
+              </Menu>
+            </Header>
+            {self.state.number}
             <button onclick=onclick>{"click me"}</button>
-            <Button onClick=handle_change_title>{"hello"}</Button>
-            <Button onClick=handle_add>{"+1"}</Button>
-
-          </div>
+            <Button onclick=handle_change_title>{"hello"}</Button>
+            <Button onclick=handle_add>{"+1"}</Button>
+          </>
         }
         // html! {
         //     <div class="todomvc-wrapper">

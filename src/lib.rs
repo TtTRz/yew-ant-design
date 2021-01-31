@@ -5,11 +5,20 @@ mod app;
 mod components {
     pub mod button;
     pub mod header;
+    pub mod menu {
+      pub mod menu_item;
+      pub mod menu;
+    }
 }
 //----CompList----
 use crate::components::button::Button;
-use crate::components::header::HeaderComp; // HeaderComp
+use crate::components::header::Header; // HeaderComp
+use crate::components::menu::menu::Menu;
+use crate::components::menu::menu_item::MenuItem;
+
 //----CompList----
+
+
 
 use wasm_bindgen::prelude::*;
 

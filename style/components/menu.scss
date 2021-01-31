@@ -1,0 +1,19 @@
+.menu {
+  width: 100%;
+  line-height: 46px;
+  border: 0;
+  border-bottom: 1px solid #f0f0f0;
+  box-shadow: none;
+  box-sizing: border-box;
+  font-variant: tabular-nums;
+  font-feature-settings: "tnum";
+  margin: 0;
+  padding: 0;
+  color: rgba(0,0,0,.85);
+  font-size: 14px;
+  text-align: left;
+  list-style: none;
+  background: #fff;
+  outline: none;
+  transition: background .3s,width .3s cubic-bezier(.2,0,0,1) 0s;
+}

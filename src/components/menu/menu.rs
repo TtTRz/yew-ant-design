@@ -1,43 +1,40 @@
 use log::*;
-
 use yew::prelude::*;
 
 pub trait NeqAssign {
-  fn neq_assign(&mut self, new: Self) -> ShouldRender;
+    fn neq_assign(&mut self, new: Self) -> ShouldRender;
 }
 
 impl<T: PartialEq> NeqAssign for T {
-  fn neq_assign(&mut self, new: T) -> ShouldRender {
-      if self != &new {
-          *self = new;
-          true
-      } else {
-          false
-      }
-  }
+    fn neq_assign(&mut self, new: T) -> ShouldRender {
+        if self != &new {
+            *self = new;
+            true
+        } else {
+            false
+        }
+    }
 }
-
 
 #[derive(Clone, PartialEq, Properties, Debug)]
 pub struct Props {
-    pub children: Children,
-    pub onclick: Callback<MouseEvent>,
+    children: Children,
 }
 
-pub enum Msg {}
-
-pub struct Button {
+pub struct Menu {
     link: ComponentLink<Self>,
     props: Props,
 }
 
-impl Component for Button {
+pub enum Msg {}
+
+impl Component for Menu {
     type Message = Msg;
     type Properties = Props;
 
     fn create(props: Self::Properties, link: ComponentLink<Self>) -> Self {
         info!("{:?}", props);
-        Button { props, link }
+        Menu { props, link }
     }
 
     fn update(&mut self, msg: Self::Message) -> ShouldRender {
@@ -52,7 +49,7 @@ impl Component for Button {
 
     fn view(&self) -> Html {
         html! {
-          <button onclick=&self.props.onclick>{self.props.children.clone()}</button>
+          <ul class=vec!["menu"]>{self.props.children.clone()}</ul>
         }
     }
 }

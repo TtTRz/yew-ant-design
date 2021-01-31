@@ -1,5 +1,4 @@
 use log::*;
-
 use yew::prelude::*;
 
 pub trait NeqAssign {
@@ -19,22 +18,23 @@ impl<T: PartialEq> NeqAssign for T {
 
 #[derive(Clone, PartialEq, Properties, Debug)]
 pub struct Props {
-    pub title: String,
+    children: Children,
 }
 
-pub struct HeaderComp {
+pub struct Header {
     link: ComponentLink<Self>,
     props: Props,
 }
+
 pub enum Msg {}
 
-impl Component for HeaderComp {
+impl Component for Header {
     type Message = Msg;
     type Properties = Props;
 
     fn create(props: Self::Properties, link: ComponentLink<Self>) -> Self {
         info!("{:?}", props);
-        HeaderComp { props, link }
+        Header { props, link }
     }
 
     fn update(&mut self, msg: Self::Message) -> ShouldRender {
@@ -49,7 +49,7 @@ impl Component for HeaderComp {
 
     fn view(&self) -> Html {
         html! {
-          <div>{&self.props.title}</div>
+          <div class=vec!["header"]>{self.props.children.clone()}</div>
         }
     }
 }
