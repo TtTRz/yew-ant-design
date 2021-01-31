@@ -2,3 +2,6 @@
 
 ## Start
 ```yarn run dev```
+
+## Build
+```yarn run build```
